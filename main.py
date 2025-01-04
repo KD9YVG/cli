@@ -23,8 +23,15 @@ class UserInput:
             print(message)
         elif self.instring == 'clear':
             print("\033[H\033[J")
+        elif self.instring == 'help':
+            with open('help.txt', 'r') as f:
+                contents = f.read()
+                # Split at the period to color first sentence
+                first_sentence, rest = contents.split('.', 1)
+                print(color.BG_RED + first_sentence + '.' + color.RESET + rest)
         else:
             print(color.RED + self.instring + color.RESET + f', Command not found. For more information, type "{color.YELLOW}help{color.RESET}".')
 
 while True:
+    print(f'{color.GREEN}OK {color.BLUE}$ {color.RESET}', end='')
     UserInput().cmd()

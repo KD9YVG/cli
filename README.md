@@ -8,3 +8,5 @@ Goals:
 - Maintain my python skills
 
 I will add more goals to this list as I go along
+
+*Some code was generated using Github Copilot and Mistral AI Le Chat*

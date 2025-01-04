@@ -1,3 +1,10 @@
+## TODO ##
+##########
+# Add more commands
+# Move colors to another file
+# Add a help command
+# Update README.md
+
 # ANSI codes for colors
 RESET = "\033[0m"
 BLACK = "\033[30m"

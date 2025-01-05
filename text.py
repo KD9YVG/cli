@@ -1,5 +1,6 @@
 import os
 import msvcrt  # For Windows-specific keyboard input handling
+import shutil
 
 dir = input('File name/path: ')
 
@@ -33,13 +34,22 @@ class textEdit:
     def main(self):
         while True:
             os.system('cls' if os.name == 'nt' else 'clear')
+            columns, rows = shutil.get_terminal_size()
+            header = f"Editing: {self.file_path} - Press 'Ctrl+Q' to quit"
+            footer = "Press 'Ctrl+W' to move up, 'Ctrl+S' to move down, 'Enter' to add a new line."
+            
+            print(f"\033[7m{header.center(columns)}\033[0m")  # Highlighted header
             for i, line in enumerate(self.text):
                 if i == self.cursor_y:
                     print(f"> {line}", end='')
                 else:
                     print(f"  {line}", end='')
-            print("\nPress 'Ctrl+Q' to quit, 'Ctrl+W' to move up, 'Ctrl+S' to move down.")
-            print("Press 'Enter' to add a new line.")
+            
+            # Fill the remaining lines with empty lines
+            for _ in range(rows - len(self.text) - 3):
+                print()
+            
+            print(f"\033[7m{footer.center(columns)}\033[0m")  # Highlighted footer
             
             if os.name == 'nt':
                 user_input = msvcrt.getch()
@@ -52,12 +62,11 @@ class textEdit:
                 elif user_input == b'\r':  # Enter key
                     self.text.insert(self.cursor_y + 1, '\n')
                     self.cursor_y += 1
-                else:
-                    user_input = input("Enter text: ")
+                elif user_input.isprintable():
                     if self.cursor_y < len(self.text):
-                        self.text[self.cursor_y] = user_input + '\n'
+                        self.text[self.cursor_y] = user_input.decode() + '\n'
                     else:
-                        self.text.append(user_input + '\n')
+                        self.text.append(user_input.decode() + '\n')
                     self.cursor_y = len(self.text) - 1
             else:
                 user_input = input("Enter text: ")

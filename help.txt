@@ -1,1 +1,2 @@
 This help file is not currently maintained. This repository is a great example of the source code being better documentation than the documentation itself. Please read the source code.
+For more information, read README.md or cmd.md

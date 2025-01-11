@@ -21,7 +21,7 @@ class UserInput:
         elif self.instring.startswith('echo '):
             # Extract the part of the string after 'echo '
             message = self.instring[len('echo '):]
-            print(message)
+            print(message) 
         elif self.instring == 'clear':
             print("\033[H\033[J")
         elif self.instring == 'help':

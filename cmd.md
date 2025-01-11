@@ -1,7 +1,7 @@
 # Command List
 This is the list of commands in this terminal. This is the current adjacent to the help file.
 
-*Commands*
+**Commands**
 * `echo`
     * `echo *input*` and the terminal will output the input just entered
 * `clear`

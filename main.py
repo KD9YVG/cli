@@ -6,7 +6,8 @@
 # Update README.md
 # Add text editor
 
-import colors as color
+from Files import colors as color
+from Files import cmdhandle as cmdhdl
 
 class UserInput:
     def __init__(self):
@@ -22,10 +23,10 @@ class UserInput:
             # Extract the part of the string after 'echo '
             message = self.instring[len('echo '):]
             print(message) 
-        elif self.instring == 'clear':
+        elif self.instring == 'clear' or self.instring == 'cls':
             print("\033[H\033[J")
         elif self.instring == 'help':
-            with open('help.txt', 'r') as f:
+            with open('Files/help.txt', 'r') as f:
                 contents = f.read()
                 # Split at the period to color first sentence
                 first_sentence, rest = contents.split('.', 1)

@@ -12,8 +12,17 @@ def setup():
         return None
     return f
 
-f = setup()
-if f:
-    print(f.read())
+class editor:
+    def __init__(self):
+        self.f = setup()
+        if self.f == None:
+            return
+        print(self.f.read())
+        self.f.close()
+    def close(self):
+        self.f.close()
+        return
 
+f = setup()
+print(f.read())
 f.close()

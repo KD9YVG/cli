@@ -1,16 +1,24 @@
-class identify:
-    def __init__(self, string):
-        self.string = string
-        words = string.split()
-        self.command = words[0]
+class Identify:
+    def __init__(self, string=''):
+        self.instring = ""
+        self.command = ""
+        self.words = []
+        if string != '':
+            self.instring = string
+            self.words = string.split()
+            self.command = self.words[0]
+            
+    def demo(self, instring):
+        self.instring = instring
+        self.words = instring.split()
+        if self.words:
+            self.command = self.words[0]
 
-class demo:
-    def __init__(self):
-        self.instring = input()
-        print('\033[2J')
-        print(self.instring)
-        identify(self.instring)
-        ## print(identify.words)
-        print(identify.command)
+    def get_instring(self):
+        return self.instring
 
-demo()
+    def get_words(self):
+        return self.words
+
+    def get_command(self):
+        return self.command

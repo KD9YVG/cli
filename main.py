@@ -33,6 +33,12 @@ class UserInput:
                 print(color.BG_RED + first_sentence + '.' + color.RESET + rest)
         elif self.instring.startswith('text'):
             print('Text editor')
+        elif self.instring == 'cmdhandledemo':
+            cmd = cmdhdl.Identify()
+            cmd.demo(input('CMDHANDLE Demo: '))
+            print(cmd.get_instring())
+            print(cmd.get_words())
+            print(cmd.get_command())
         else:
             print(color.RED + self.instring + color.RESET + f', Command not found. For more information, type "{color.YELLOW}help{color.RESET}".')
 

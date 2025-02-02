@@ -1,9 +1,6 @@
 ## TODO ##
 ##########
 # Add more commands
-# Move colors to another file
-# Add a help command
-# Update README.md
 # Add text editor
 
 from Files import colors as color
@@ -43,5 +40,8 @@ class UserInput:
             print(color.RED + self.instring + color.RESET + f', Command not found. For more information, type "{color.YELLOW}help{color.RESET}".')
 
 while True:
-    print(f'{color.GREEN}OK {color.BLUE}$ {color.RESET}', end='')
-    UserInput().cmd()
+    try:
+        print(f'{color.GREEN}OK {color.BLUE}$ {color.RESET}', end='')
+        UserInput().cmd()
+    except KeyboardInterrupt:
+        print(color.RED + '\nExit' + color.RESET)

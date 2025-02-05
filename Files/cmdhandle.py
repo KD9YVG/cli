@@ -32,8 +32,9 @@ class cmdhandle:
     def identify(self, instring):
         global run
         if run == True:
-            command = cmdIdentify.get_command()
-            with open('Files/commands.txt', 'r') as file:
+            cmd = cmdIdentify(instring)
+            command = cmd.get_command()
+            with open('cmdhandle.txt', 'r') as file:
                 # read the file line by line
                 for line_num, line in enumerate(file, 1):
                     # check if the command is in the file

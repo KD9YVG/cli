@@ -1,48 +1,36 @@
-global run
-run = False
+class command:
+    def split(command):
+        # Split the string into a list of words
+        words = command.split()
+    
+        # Get the first word
+        first_word = words[0] if words else ""
+    
+        # Get the remaining words (if any)
+        remaining_words = words[1:] if len(words) > 1 else []
+    
+        return first_word, remaining_words
 
-class cmdIdentify:
-    def __init__(self, string=''):
-        self.instring = ""
-        self.command = ""
-        self.words = []
-        if string != '':
-            self.instring = string
-            self.words = string.split()
-            self.command = self.words[0]
-            global run
-            run = True
-            
-    def demo(self, instring):
-        self.instring = instring
-        self.words = instring.split()
-        if self.words:
-            self.command = self.words[0]
+    def command(command):
+        # Split the string into a list of words
+        words = command.split()
+    
+        # Get the first word
+        first_word = words[0] if words else ""
 
-    def get_instring(self):
-        return self.instring
+        return first_word
 
-    def get_words(self):
-        return self.words
+    def arguments(command):
+        # Split the string into a list of words
+        words = command.split()
 
-    def get_command(self):
-        return self.command
+        # Get the remaining words (if any)
+        remaining_words = words[1:] if len(words) > 1 else []
 
-class cmdhandle:
-    def identify(self, instring):
-        global run
-        if run == True:
-            cmd = cmdIdentify(instring)
-            command = cmd.get_command()
-            with open('cmdhandle.txt', 'r') as file:
-                # read the file line by line
-                for line_num, line in enumerate(file, 1):
-                    # check if the command is in the file
-                    if command in line:
-                        print(f"Line {line_num}: {line}")
-                        break
-                else:
-                    print('Command not found')
+        return remaining_words
 
-cmdIdentify(input())
-cmdhandle().identify(input())
+
+# instir = input("Enter a command: ")
+# print(str(command.split(instir)))
+# print(str(command.command(instir)))
+# print(str(command.arguments(instir)))

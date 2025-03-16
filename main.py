@@ -3,8 +3,9 @@
 # Add more commands
 # Add text editor
 
-from Files import colors as color
-from Files import cmdhandle as cmdhdl
+from Files.Libs import colors as color
+from Files.Libs import cmdhandle as cmdhdl
+from blessed import Terminal as bt
 
 class UserInput:
     def __init__(self):

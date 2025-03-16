@@ -45,3 +45,4 @@ while True:
         UserInput().cmd()
     except KeyboardInterrupt:
         print(color.RED + '\nExit' + color.RESET)
+        exit(0)

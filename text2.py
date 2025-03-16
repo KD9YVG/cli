@@ -1,7 +1,7 @@
 def setup():
     print('\033[H\033[J')
     print('Text editor 0.0.1 Alpha')
-    print('-----------------------')
+    print('------------------------')
     dir = input('File name/path: ')
     try:
         f = open(dir, 'r+')

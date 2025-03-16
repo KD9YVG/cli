@@ -5,9 +5,12 @@
 
 from Files.Libs import colors as color
 from Files.Libs import cmdhandle as cmdhdl
-from blessed import Terminal as bt
+import blessed
 
-class UserInput:
+term = blessed.Terminal()
+term.enter_fullscreen()
+
+class Main:
     def __init__(self):
         self.instring = input()
     
@@ -17,6 +20,7 @@ class UserInput:
     def cmd(self):
         if self.instring == "exit":
             exit(0)
+            term.exit_fullscreen()
         elif self.instring.startswith('echo '):
             # Extract the part of the string after 'echo '
             message = self.instring[len('echo '):]
@@ -43,7 +47,8 @@ class UserInput:
 while True:
     try:
         print(f'{color.GREEN}OK {color.BLUE}$ {color.RESET}', end='')
-        UserInput().cmd()
+        Main().cmd()
     except KeyboardInterrupt:
         print(color.RED + '\nExit' + color.RESET)
+        term.exit_fullscreen()
         exit(0)

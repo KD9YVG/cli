@@ -8,7 +8,6 @@ from Files.Libs import cmdhandle as cmdhdl
 import blessed
 
 term = blessed.Terminal()
-term.enter_fullscreen()
 
 class Main:
     def __init__(self):
@@ -19,14 +18,14 @@ class Main:
 
     def cmd(self):
         if self.instring == "exit":
+            print(term.exit_fullscreen())
             exit(0)
-            term.exit_fullscreen()
         elif self.instring.startswith('echo '):
             # Extract the part of the string after 'echo '
             message = self.instring[len('echo '):]
             print(message) 
         elif self.instring == 'clear' or self.instring == 'cls':
-            print("\033[H\033[J")
+            print(term.clear)
         elif self.instring == 'help':
             with open('Files/help.txt', 'r') as f:
                 contents = f.read()
@@ -44,11 +43,12 @@ class Main:
         else:
             print(color.RED + self.instring + color.RESET + f', Command not found. For more information, type "{color.YELLOW}help{color.RESET}".')
 
-while True:
-    try:
-        print(f'{color.GREEN}OK {color.BLUE}$ {color.RESET}', end='')
-        Main().cmd()
-    except KeyboardInterrupt:
-        print(color.RED + '\nExit' + color.RESET)
-        term.exit_fullscreen()
-        exit(0)
+with term.fullscreen():
+    while True:
+        try:
+            print(f'{color.GREEN}OK {color.BLUE}$ {color.RESET}', end='', flush=True)
+            Main().cmd()
+        except KeyboardInterrupt:
+            print(term.exit_fullscreen())
+            print(color.RED + '\nExit' + color.RESET)
+            exit(0)

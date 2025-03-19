@@ -33,7 +33,9 @@ class Main:
                 first_sentence, rest = contents.split('.', 1)
                 print(color.BG_RED + first_sentence + '.' + color.RESET + rest)
         elif self.instring.startswith('text'):
-            print('Text editor')
+            print('HaHa')
+            exec(open("text.py").read())
+            open("text.py").close()
         elif self.instring == 'cmdhandledemo':
             cmd = cmdhdl.Identify()
             cmd.demo(input('CMDHANDLE Demo: '))

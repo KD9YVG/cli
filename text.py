@@ -1,10 +1,10 @@
 import blessed
-import time
 
 term = blessed.Terminal()
 
 class Text:
     def __init__(self):
+<<<<<<< HEAD
         print(term.enter_fullscreen())
         print(term.clear)
         print(term.on_white(term.black('pyText 0.0.1 Alpha').center(term.width).ljust(term.width)))
@@ -29,3 +29,9 @@ class Text:
 
 Text()
 print(term.exit_fullscreen())
+=======
+        print(term.center(term.on_white(term.black('pyText 0.0.1 Alpha'))))
+        print(term.move_down)
+
+Text()
+>>>>>>> parent of 03cc37b (text.py now takes up full screen)

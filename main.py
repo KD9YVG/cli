@@ -27,7 +27,7 @@ class Main:
         elif self.instring == 'clear' or self.instring == 'cls':
             print(term.clear)
         elif self.instring == 'help':
-            with open('Files/help.txt', 'r') as f:
+            with open('Files/Docs/help.txt', 'r') as f:
                 contents = f.read()
                 # Split at the period to color first sentence
                 first_sentence, rest = contents.split('.', 1)
